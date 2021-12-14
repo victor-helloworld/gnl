@@ -11,58 +11,48 @@
 /* ************************************************************************** */
 #include"get_next_line.h"
 #include <fcntl.h>
-/*
-int				main()
-{
-	int			fd;
-	char		*str;
-	int			i;
 
-	i = 0;
-	fd = open("lotr.txt", O_RDONLY);
-	while ((str = get_next_line(fd)))
-		free(str);
-	return (0);
-}
-*/
-/*
-int	main()
-{
-	int			fd;
-	char		*str;
-	int			i;
+int	ft_nbrlines(void)
+{   
+	int nbr_lines;
+	char chr;
+	FILE *fp;
 
-	i = 0;
-	fd = open("lotr.txt", O_RDONLY);
-// 	get_next_line(fd, &str);
-//	printf("%s", str); 
-	while ((str = get_next_line(fd)))
+	nbr_lines = 0;
+	fp = fopen(FILEPATH, "r");
+
+	chr = getc(fp);
+	printf("hola\n");
+	while (chr != EOF)
 	{
-       //printf("line %i=>%s", i + 1, str);
-		free(str);
-		//i++;
+		if (chr == '\n')
+			nbr_lines++;
+		chr = getc(fp);
 	}
-	//system("leaks a.out");
-	return (0);
+	fclose(fp);
+	printf("There are %d lines in %s  in a file\n", nbr_lines, FILEPATH);
+	return 0;
 }
-*/
 
-int	main(void)
+
+int	main(void) //int argc, char **argv)
 {
 	int	fd;
 	char	*line;
+	int	i;
+
+	i = 0;
+	ft_nbrlines();
 	fd = open(FILEPATH, O_RDONLY);
-	line = get_next_line(fd);
-	line[0] = '0';
-	//printf("%s",line);
-	free (line);
-	line = get_next_line(fd);
-	//printf("%s",line);
-	free (line);
+	while ((line = get_next_line(fd)) && i < 1)
+	{
+		printf("line %i=>%s", i + 1, line);
+		free(line);
+		i++;
+	}
 	//line = get_next_line(fd);
 	//printf("%s",line);
 	//free (line);
 	close (fd);
 	return (0);
 }
-

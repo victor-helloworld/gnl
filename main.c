@@ -3,73 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcollazo <vcollazo@student.42madrid>       +#+  +:+       +#+        */
+/*   By: vcollazo  marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 18:44:51 by vcollazo          #+#    #+#             */
-/*   Updated: 2021/11/30 18:50:14 by vcollazo         ###   ########.fr       */
+/*   Created: 2021/10/20 11:53:01 by vcollazo          #+#    #+#             */
+/*   Updated: 2021/11/25 13:50:14 by vcollazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-# Archivo de Carlos
-
-#include <stdio.h>
-#include <unistd.h>
+#include"get_next_line.h"
 #include <fcntl.h>
-#include "get_next_line.h"
 
-/*int	main(void)
-{
-	int		fd;
-	char	*print;
-	
-	fd = open("ElQuijote.txt", O_RDONLY);
-	if (fd == -1)
-		return (write(1, "NULL\n", 5));
-	print = get_next_line(fd);
-	
-//	system("leaks a.out");:w
-//
-	printf("%s\n", print);
-	printf("------------------------------------------------\n");
-	print = get_next_line(fd);
-	printf("%s\n", print);
-	printf("------------------------------------------------\n");
-	print = get_next_line(fd);
-	printf("%s\n", print);
-	printf("------------------------------------------------\n");
-	print = get_next_line(fd);
-	printf("%s\n", print);
-	close(fd);
-}
-*/
-int				main()
-{
-	int			fd;
-	char		*str;
-	int			i;
-	i = 0;
-//	char hola[5];
-//	hola[0] = 'h';
-//	hola[1] = 'o';
-//	hola[2] = '3';
-//	hola[3] = '4';
-	//hola[4] = '\n';
-	
-//	printf("%s%d,", hola, check(hola));
-	fd = open("ElQuijote.txt", O_RDONLY);
- //	printf("%s",get_next_line(fd));
-//	get_next_line(fd);
-//	str = malloc(2 * sizeof(char));
-//	i = read(fd, str, 43);
-//	printf("%d", i);
-//	printf("%s", str); 
-	while ((str = get_next_line(fd)) && i < 1)
+int	ft_nbrlines(void)
+{   
+	int nbr_lines;
+	char chr;
+	FILE *fp;
+
+	nbr_lines = 0;
+	fp = fopen(FILEPATH, "r");
+
+	chr = getc(fp);
+	printf("hola\n");
+	while (chr != EOF)
 	{
-		printf("line %i=>%s", i + 1, str);
-		free(str);
+		if (chr == '\n')
+			nbr_lines++;
+		chr = getc(fp);
+	}
+	fclose(fp);
+	printf("There are %d lines in %s  in a file\n", nbr_lines, FILEPATH);
+	return 0;
+}
+
+
+int	main(void) //int argc, char **argv)
+{
+	int	fd;
+	char	*line;
+	int	i;
+
+	i = 0;
+	ft_nbrlines();
+	fd = open(FILEPATH, O_RDONLY);
+	while ((line = get_next_line(fd)) && i < 1)
+	{
+		printf("line %i=>%s", i + 1, line);
+		free(line);
 		i++;
 	}
-//	printf("%s\n", str);
-//system("leaks a.out");
+	//line = get_next_line(fd);
+	//printf("%s",line);
+	//free (line);
+	close (fd);
 	return (0);
 }
