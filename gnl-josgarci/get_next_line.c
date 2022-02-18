@@ -12,6 +12,7 @@
 
 #include "get_next_line.h"
 
+
 char	*ft_split_line(char **rest, int first_n);
 char	*ft_readtext(int fd, int *first_n, char **rest, size_t *lenrest);
 char	*ft_fill_buffer(char *buffer, int *lenread, int fd);
