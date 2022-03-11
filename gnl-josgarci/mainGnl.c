@@ -6,7 +6,7 @@
 /*   By: potero-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 11:53:01 by potero-d          #+#    #+#             */
-/*   Updated: 2021/11/25 13:50:14 by josgarci         ###   ########.fr       */
+/*   Updated: 2022/02/24 14:21:13 by vcollazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"get_next_line.h"
@@ -22,7 +22,6 @@ int	ft_nbrlines(void)
 	fp = fopen(FILEPATH, "r");
 
 	chr = getc(fp);
-	printf("hola\n");
 	while (chr != EOF)
 	{
 		if (chr == '\n')
@@ -30,8 +29,8 @@ int	ft_nbrlines(void)
 		chr = getc(fp);
 	}
 	fclose(fp);
-	printf("There are %d lines in %s  in a file\n", nbr_lines, FILEPATH);
-	return 0;
+	printf("There are %d lines in %s\n", nbr_lines, FILEPATH);
+	return (0);
 }
 
 
@@ -44,15 +43,15 @@ int	main(void) //int argc, char **argv)
 	i = 0;
 	ft_nbrlines();
 	fd = open(FILEPATH, O_RDONLY);
-	while ((line = get_next_line(fd)) && i < 1)
+	while ((line = get_next_line(fd)) && i < 10)
 	{
-		printf("line %i=>%s", i + 1, line);
+		printf("\033[0;36m");
+		printf("line %i ===> ", i + 1);
+		printf("\033[0m");
+		printf("%s", line);
 		free(line);
 		i++;
 	}
-	//line = get_next_line(fd);
-	//printf("%s",line);
-	//free (line);
 	close (fd);
 	return (0);
 }
