@@ -1,19 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mainGnl.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: potero-d <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vcollazo  marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/20 11:53:01 by potero-d          #+#    #+#             */
-<<<<<<< HEAD:other/gnl-josgarci/mainGnl.c
-/*   Updated: 2022/02/11 16:48:57 by vcollazo         ###   ########.fr       */
-=======
-/*   Updated: 2022/02/24 14:21:13 by vcollazo         ###   ########.fr       */
->>>>>>> 934c0980e7750d677486905215a16ea68b40a7e9:gnl-josgarci/mainGnl.c
+/*   Created: 2021/10/20 11:53:01 by vcollazo          #+#    #+#             */
+/*   Updated: 2022/03/17 17:54:07 by vcollazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"get_next_line.h"
+#include "../inc/get_next_line.h"
 #include <fcntl.h>
 
 int	ft_nbrlines(void)
@@ -26,6 +22,7 @@ int	ft_nbrlines(void)
 	fp = fopen(FILEPATH, "r");
 
 	chr = getc(fp);
+	printf("hola\n");
 	while (chr != EOF)
 	{
 		if (chr == '\n')
@@ -33,13 +30,8 @@ int	ft_nbrlines(void)
 		chr = getc(fp);
 	}
 	fclose(fp);
-<<<<<<< HEAD:other/gnl-josgarci/mainGnl.c
-	printf("There are %d lines in \"%s\" file\n", nbr_lines, FILEPATH);
-	return 0;
-=======
-	printf("There are %d lines in %s\n", nbr_lines, FILEPATH);
+	printf("There are %d lines in %s  in a file\n", nbr_lines, FILEPATH);
 	return (0);
->>>>>>> 934c0980e7750d677486905215a16ea68b40a7e9:gnl-josgarci/mainGnl.c
 }
 
 
@@ -52,15 +44,15 @@ int	main(void) //int argc, char **argv)
 	i = 0;
 	ft_nbrlines();
 	fd = open(FILEPATH, O_RDONLY);
-	while ((line = get_next_line(fd)) && i < 10)
+	while ((line = get_next_line(fd)) && i < 1)
 	{
-		printf("\033[0;36m");
-		printf("line %i ===> ", i + 1);
-		printf("\033[0m");
-		printf("%s", line);
+		printf("line %i=>%s", i + 1, line);
 		free(line);
 		i++;
 	}
+	//line = get_next_line(fd);
+	//printf("%s",line);
+	//free (line);
 	close (fd);
 	return (0);
 }
