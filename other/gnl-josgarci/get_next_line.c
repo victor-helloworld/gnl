@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: josgarci <josgarci@student.42madrid>       +#+  +:+       +#+        */
+/*   By: vcollazo <vcollazo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 08:06:13 by josgarci          #+#    #+#             */
-/*   Updated: 2021/11/25 13:52:29 by josgarci         ###   ########.fr       */
+/*   Updated: 2021/12/16 18:36:37 by vcollazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_readtext(int fd, int *first_n, char **rest, size_t *lenrest)
 		}
 		*lenrest += lenread;
 		*first_n = ft_strchr(buffer, 10);
-		if (*first_n != -1)
+		if (*first_n != -1) 
 			*first_n = *first_n + *lenrest - lenread - 0;
 		aux = ft_strjoin(*rest, buffer);
 		free(buffer);

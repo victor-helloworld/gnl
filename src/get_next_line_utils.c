@@ -6,11 +6,11 @@
 /*   By: vcollazo <vcollazo@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 10:20:20 by vcollazo          #+#    #+#             */
-/*   Updated: 2021/11/30 10:22:21 by vcollazo         ###   ########.fr       */
+/*   Updated: 2022/03/17 17:53:49 by vcollazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../inc/get_next_line.h"
 
 void	ft_bzero(void *str, size_t n)
 {

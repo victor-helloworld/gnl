@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mainGnl.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcollazo  marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: potero-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/20 11:53:01 by vcollazo          #+#    #+#             */
-/*   Updated: 2021/11/25 13:50:14 by vcollazo         ###   ########.fr       */
+/*   Created: 2021/10/20 11:53:01 by potero-d          #+#    #+#             */
+/*   Updated: 2022/02/11 16:48:57 by vcollazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"get_next_line.h"
@@ -30,7 +30,7 @@ int	ft_nbrlines(void)
 		chr = getc(fp);
 	}
 	fclose(fp);
-	printf("There are %d lines in %s  in a file\n", nbr_lines, FILEPATH);
+	printf("There are %d lines in \"%s\" file\n", nbr_lines, FILEPATH);
 	return 0;
 }
 

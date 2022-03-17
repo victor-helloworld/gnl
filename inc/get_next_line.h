@@ -6,7 +6,7 @@
 /*   By: vcollazo <vcollazo@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:01:06 by vcollazo          #+#    #+#             */
-/*   Updated: 2021/11/30 10:19:16 by vcollazo         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:07:34 by vcollazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_list {
 
 char	*get_next_line(int fd);
 void	ft_bzero(void *s, size_t n);
-char	*ft_strchr(const char *s, int c);
+int		ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *s);
