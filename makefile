@@ -13,11 +13,7 @@ SRCS =	main.c\
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
-BONUS_OBJS	= $(BONUS:.c=.o)
-
-NAME = libft.a
-
-PROJECTNAME = gnl.out
+PROJECTNAME = gnl
 
 PATHNAME = '"lotr.txt"'
 
@@ -28,38 +24,36 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -o $(PROJECTNAME) -D FILEPATH=$(PATHNAME)\
 		 -D BUFFER_SIZE=$(BUFFER_SIZE)
 
-RM = rm -f
+RM = rm -rf
 
 ################################################################################
 #		IMPLICIT RULES
 ################################################################################
 
+all:  $(NAME)
+
+$(NAME): $(OBJS) | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
-	@${CC} ${CFLAGS} -c $< -o $@
-
-all:		${NAME}
-
-${NAME}:	${OBJS}
-	@ar rcs $(NAME) $(OBJS)
-
-$(OBJS):	| $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR)
 
-run:		re
-			./$(PROJECTNAME)
+run: re
+	./$(PROJECTNAME)
 
-bonus:		$(BONUS_OBJS)
-			ar rc $(NAME) $?
+bonus: $(BONUS_OBJS)
+	ar rcs $(NAME) $?
 
 clean:	
-	@${RM} *.o	
+	@$(RM) *.o	
 
 fclean:		clean
-	@${RM} ${NAME}
+	@$(RM) $(NAME) $(OBJ_DIR)
 
-re:	fclean all fclean
+re:	fclean all 
 
 # .PHONY rules are fictitial rules (always out of date)
 .PHONY:		all clean fclean re bonus
