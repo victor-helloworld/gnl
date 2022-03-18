@@ -22,32 +22,6 @@ char	*ft_strjoin(char *s1, char *s2);
 char*	ft_readtext(int fd, char* rest);
 char    *get_next_line(int fd);
 
-int	main(void)
-{	int	fd;
-	char	*line;
-	int	i;
-
-	i = 0;
-	fd = 1;
-	char str[] = "Hello World";
-	printf("str: %s\n", str);
-	printf("str_len: %i\n", ft_strlen(str));
-	printf("o is in str: %i\n", ft_isin(str, 111));
-	fd = open(FILEPATH, O_RDONLY);
-	printf("holaholahola");
-	while ((line = get_next_line(fd)) && i < 10)
-	{
-		printf("\033[0;36m");
-		printf("line %i ===> ", i + 1);
-		printf("\033[0m");
-		printf("%s", line);
-		free(line);
-		i++;
-	}
-	close (fd);
-	return (0);
-}
-
 char	*get_next_line(int fd)
 {
 	static char	*rest;

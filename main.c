@@ -9,7 +9,7 @@
 /*   Updated: 2022/03/17 21:27:30 by vcollazo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../inc/get_next_line.h"
+#include "get_next_line.h"
 #include <fcntl.h>
 
 int	ft_nbrlines(void)
@@ -19,7 +19,7 @@ int	ft_nbrlines(void)
 	FILE *fp;
 
 	nbr_lines = 0;
-	fp = fopen(FILEPATH, "r");
+	fp = fopen("lotr.txt", "r");
 
 	chr = getc(fp);
 	printf("hola\n");
@@ -30,7 +30,6 @@ int	ft_nbrlines(void)
 		chr = getc(fp);
 	}
 	fclose(fp);
-	printf("There are %d lines in %s  in a file\n", nbr_lines, FILEPATH);
 	return (0);
 }
 
@@ -43,7 +42,7 @@ int	main(void) //int argc, char **argv)
 
 	i = 0;
 	ft_nbrlines();
-	fd = open(FILEPATH, O_RDONLY);
+	fd = open("lotr.txt", O_RDONLY);
 	while ((line = get_next_line(fd)) && i < 1)
 	{
 		printf("line %i=>%s", i + 1, line);
